@@ -20,3 +20,7 @@ Route::prefix('users')
         Route::get('/', [UserController::class, 'index'])->name('index');
         Route::get('/{userId}', [UserController::class, 'show'])->name('show');
     });
+
+Route::get('/ping', function() {
+    return response()->json(['message' => 'pong']);
+})->name('ping-pong');

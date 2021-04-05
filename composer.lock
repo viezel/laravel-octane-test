@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a16c3c541bd99241cab1c21ce8e83ac",
+    "content-hash": "ff2e67aba79a48abcbc98a7cc959f669",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7366,6 +7366,57 @@
                 }
             ],
             "time": "2020-07-12T23:59:07+00:00"
+        },
+        {
+            "name": "viezel/dock",
+            "version": "1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/viezel/Dock.git",
+                "reference": "6048eb79a825ddcc01428435a2f37e4e1b484c8b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/viezel/Dock/zipball/6048eb79a825ddcc01428435a2f37e4e1b484c8b",
+                "reference": "6048eb79a825ddcc01428435a2f37e4e1b484c8b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^7.0|^8.0|^9.0",
+                "illuminate/support": "^7.0|^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "bin": [
+                "bin/dock"
+            ],
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Viezel\\Dock\\DockServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Viezel\\Dock\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Docker for Laravel Development",
+            "homepage": "https://github.com/viezel/dock",
+            "keywords": [
+                "docker",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/viezel/Dock/issues",
+                "source": "https://github.com/viezel/Dock/tree/1.1.6"
+            },
+            "time": "2021-02-09T15:03:53+00:00"
         }
     ],
     "aliases": [],
