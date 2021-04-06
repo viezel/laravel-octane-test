@@ -10,13 +10,30 @@ We will be using [wrk](https://github.com/wg/wrk) to perform the tests
 Comparing PHP-FPM vs Swoole in: 
 
 - Basic throughput benchmark 
-- Sync vs async MySQL and Redis
+- Sync vs async MySQL and Redis 
 - Importance of connection pools
+- CPU & memory usage
 
 
 ## The Tests
 
-We will be using the following API endpoints to test performance.
+We will be running the following commands using wrk. We use 4 threads, 50 connections in 30 seconds per test.
+
+Using the following API endpoints to test performance. 
+
+```php
+Route::get('/ping', function() {
+    return response()->json(['message' => 'pong']);
+});
+
+Route::get('/users', function () {
+    return response()->json(User::query()->paginate());
+});
+
+Route::get('/users/{userId}', function (int $userId) {
+    return response()->json(User::query()->findOrFail($userId));
+});
+```
 
 | Route | Response | MySQL | Redis  |
 |:-----:|:--------:|:-----:|:------:|
@@ -24,16 +41,11 @@ We will be using the following API endpoints to test performance.
 | /api/users | Returns a paginated list of users | Yes | No |
 | /api/users/:id | Returns a user | Yes | No |
 
-We will be running the following commands using wrk. 
+Commands to run the test:
 
-`wrk -t4 -c50 http://localhost/api/ping` 
-`wrk -t4 -c50 http://localhost/api/users` 
-`wrk -t4 -c50 http://localhost/api/users/1` 
-
-| Route          |  FPM-Docker | Swoole-Docker | 
-|:--------------:|:-----------:|:-------------:|
-| /api/ping      | 155 req/sec | N/A req/sec   |
-| /api/users/:id |  96 req/sec | N/A req/sec   |
+- `wrk -t4 -c50 -d30s http://localhost/api/ping` 
+- `wrk -t4 -c50 -d30s http://localhost/api/users` 
+- `wrk -t4 -c50 -d30s http://localhost/api/users/1` 
 
 
 ## Get started locally
