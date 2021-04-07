@@ -17,9 +17,7 @@ Comparing PHP-FPM vs Swoole in:
 
 ## The Tests
 
-We will be running the following commands using wrk. We use 4 threads, 50 connections in 30 seconds per test.
-
-Using the following API endpoints to test performance. 
+We define the following API endpoints to test performance. 
 
 ```php
 Route::get('/ping', function() {
@@ -41,7 +39,7 @@ Route::get('/users/{userId}', function (int $userId) {
 | /api/users | Returns a paginated list of users | Yes | No |
 | /api/users/:id | Returns a user | Yes | No |
 
-Commands to run the test:
+We will be running the following commands using wrk. We use 4 threads, 50 connections in 30 seconds per test. Commands to run the test:
 
 - `wrk -t4 -c50 -d30s http://localhost/api/ping` 
 - `wrk -t4 -c50 -d30s http://localhost/api/users` 
