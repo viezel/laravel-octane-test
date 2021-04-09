@@ -32,6 +32,25 @@ return [
 
     'server' => 'swoole',
 
+    // custom. see https://www.swoole.co.uk/docs/modules/swoole-server/configuration
+    'swoole' => [
+        'options' => [
+            // You must enable openssl when installing Swoole
+            'ssl_cert_file' => env('OCTANE_SWOOLE_SSL_CERT_FILE'),
+            'ssl_key_file' => env('OCTANE_SWOOLE_SSL_KEY_FILE'),
+
+            // static files
+            'enable_static_handler' => env('OCTANE_SWOOLE_ENABLE_STATIC_HANDLER', false),
+            'document_root' => public_path(),
+            'static_handler_locations' => ['/public/assets', '/public/css',  '/public/js', '/public/vendor'],
+
+            // coroutine
+            //'enable_coroutine' => false,
+            //'max_coroutine' => 3000,
+            //'send_yield' => true,
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Force HTTPS
